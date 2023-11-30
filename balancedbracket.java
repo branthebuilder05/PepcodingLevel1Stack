@@ -1,5 +1,5 @@
 import java.util.*;
-public class balancedbracket
+public class Main
 {
 	public static void main(String[] args) {
 	    Scanner scn = new Scanner(System.in);
@@ -14,7 +14,12 @@ public class balancedbracket
 	        if((c == '(' || c=='{' || c=='[' ))
 	            st.push(c);
 	       else if((c == ')' || c=='}' || c==']' )){
+	             if(st.isEmpty()==false){
+	                 flag=false;
+	                 break;
+	             }
 	           if(c==')'){
+	              
 	               if(st.peek()=='('){
 	                    st.pop();
 	                    continue;
@@ -25,6 +30,7 @@ public class balancedbracket
 	               }
 	           }
 	           else if(c=='}'){
+	              
 	               if(st.peek()=='{'){
 	                    st.pop();
 	                    continue;
@@ -35,6 +41,7 @@ public class balancedbracket
 	               }
 	           }
 	           else if(c==']'){
+	             
 	               if(st.peek()=='['){
 	                    st.pop();
 	                    continue;
@@ -47,7 +54,8 @@ public class balancedbracket
 	               
 	           }
 	       }
-	        
+	        if(st.size()!=0) 
+	        flag=false;
  
 	    
 	   
