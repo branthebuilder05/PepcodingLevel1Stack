@@ -1,16 +1,23 @@
 import java.util.*;
-public class infixeval
+public class Main
 {
 	public static void main(String[] args) {
 		//System.out.println("Hello World");
 		
-		String s="2+4/4*(6*9)+4/2";
+		String s="12+4/4*(116*9)+4/2";
 		Stack<Integer> si=new Stack<>();
 		Stack<Character> sc = new Stack<>();
 		for(int i=0;i<s.length();i++){
 		    char c=s.charAt(i);
 		    
 		    if(Character.isDigit(c)==true) {
+		        if(si.isEmpty()==false && Character.isDigit(s.charAt(i-1))){
+		            int temp=si.pop();
+		            int a=temp*10+(c-'0');
+		            si.push(a);
+		            
+		        }
+		        else
 		        si.push(c-'0');
 		    } 
 		    else if(c=='('){
@@ -22,7 +29,7 @@ public class infixeval
 		            int dig2=si.pop();
 		            int dig1=si.pop();
 		            char c1=sc.pop();
-		            System.out.println("evaluating "+dig1+" "+c1+" "+dig2);
+		           
 		            int res=eval(dig1,dig2,c1);
 		            si.push(res);
 		    }
@@ -34,7 +41,7 @@ public class infixeval
 		            int dig2=si.pop();
 		            int dig1=si.pop();
 		            char c1=sc.pop();
-		            System.out.println("evaluating "+dig1+" "+c1+" "+dig2);
+		            
 		            int res=eval(dig1,dig2,c1);
 		            si.push(res);
 		        }
@@ -47,7 +54,7 @@ public class infixeval
 		            int dig2=si.pop();
 		            int dig1=si.pop();
 		            char c1=sc.pop();
-		            System.out.println("evaluating "+dig1+" "+c1+" "+dig2);
+		          
 		            int res=eval(dig1,dig2,c1);
 		            si.push(res);
 		}
@@ -55,6 +62,7 @@ public class infixeval
 	System.out.println(si.pop()+" "+si.size());	
 	}
 	public static int eval(int dig1,int dig2,char c){
+	      System.out.println("evaluating "+dig1+" "+c+" "+dig2);
 	    if(c=='+')
 	        return dig1+dig2;
 	   else if(c=='-')
@@ -79,5 +87,14 @@ public class infixeval
 	        
 	}
 	
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
