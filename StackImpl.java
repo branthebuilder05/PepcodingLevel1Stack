@@ -7,7 +7,7 @@ public class StackImpl
 private int[] st = new int[1];
 private int top=-1;
 
-public int peek(){return st[top];}
+public int peek(){return (top>-1)?st[top]:Integer.MIN_VALUE;}
 public int size(){return top+1;}
 public int push(int a){
     if(top==st.length-1)
@@ -25,7 +25,7 @@ public int push(int a){
 }
 
 public int pop(){
-    return st[top--];
+    return (top>-1)?st[top--]:Integer.MIN_VALUE;
 }
 public void display(){
     for(int i=top;i>=0;i--)
@@ -53,7 +53,15 @@ public void display(){
 		s.pop();
 		s.display();
 		System.out.println(s.size()+" "+s.peek());
-		
+		s.pop();
+		s.pop();
+		s.pop();
+		s.pop();
+		s.pop();
+		s.pop();
+		s.display();
+			System.out.println(s.size()+" "+s.peek());
+		System.out.println(	s.pop());
 		
 	}
 }
